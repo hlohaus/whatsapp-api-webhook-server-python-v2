@@ -50,7 +50,7 @@ class GreenAPIWebhookServer:
 
         self._server_app = FastAPI(docs_url=None)
 
-        @self._server_app.post("/")
+        @self._server_app.post("/", status_code=status.HTTP_204_NO_CONTENT)
         def webhook_endpoint(
             webhook_data: WebhookData,
             authorization: Annotated[Union[str, None], Header()] = None,
