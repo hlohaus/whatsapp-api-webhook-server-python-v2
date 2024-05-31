@@ -1,4 +1,4 @@
-from whatsapp_api_webhook_server_python_v2.main import GreenAPIWebhookServer
+from whatsapp_api_webhook_server_python_v2 import GreenAPIWebhookServer
 
 count = 0
 

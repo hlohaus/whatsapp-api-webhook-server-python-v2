@@ -181,7 +181,7 @@ docker compose up --build
 To use in your solutions, simply import the `GreenAPIWebhookServer` class and init server object.
 
 ```python
-from whatsapp_api_webhook_server_python_v2.main import GreenAPIWebhookServer
+from whatsapp_api_webhook_server_python_v2 import GreenAPIWebhookServer
 
 def event_handler(webhook_type: str, webhook_data: dict):
     # Write webhook handling logic here

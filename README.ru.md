@@ -179,7 +179,7 @@ docker compose up --build
 Для использования в ваших решениях, импортируйте `GreenAPIWebhookServer` класс и иницализируйте объект сервера:
 
 ```python
-from whatsapp_api_webhook_server_python_v2.main import GreenAPIWebhookServer
+from whatsapp_api_webhook_server_python_v2 import GreenAPIWebhookServer
 
 def event_handler(webhook_type: str, webhook_data: dict):
     # Пример функции, в которой необходимо
