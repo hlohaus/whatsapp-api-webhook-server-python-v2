@@ -277,7 +277,7 @@ class MessageData(BaseModel):
 
 class DeviceData(BaseModel):
 
-    platform: Optional[str] = Field(None, alias="")
+    platform: Optional[str] = Field(None, alias="platform")
     device_manufacturer: Optional[str] = Field(None, alias="deviceManufacturer")
     device_model: Optional[str] = Field(None, alias="deviceModel")
     os_version: Optional[str] = Field(None, alias="osVersion")
