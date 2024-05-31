@@ -1,10 +1,9 @@
 # whatsapp-api-webhook-server-python-v2
 
 ![](https://img.shields.io/badge/license-CC%20BY--ND%204.0-green)
-![](https://img.shields.io/pypi/status/whatsapp-api-webhook-server-python)
-![](https://img.shields.io/pypi/pyversions/whatsapp-api-webhook-server-python)
-![](https://img.shields.io/github/actions/workflow/status/green-api/whatsapp-api-webhook-server-python/python-package.yml)
-![](https://img.shields.io/pypi/dm/whatsapp-api-webhook-server-python)
+![](https://img.shields.io/pypi/status/whatsapp-api-webhook-server-python-v2)
+![](https://img.shields.io/pypi/pyversions/whatsapp-api-webhook-server-python-v2)
+![](https://img.shields.io/pypi/dm/whatsapp-api-webhook-server-python-v2)
 
 ## Support links
 
@@ -18,20 +17,19 @@
 [![News](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/green_api)
 [![News](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029VaLj6J4LNSa2B5Jx6s3h)
 
-- [Документация на русском языке](https://github.com/green-api/whatsapp-api-webhook-server-python-v2/blob/master/docs/README.ru.md).
+- [Документация на русском языке](https://github.com/green-api/whatsapp-api-webhook-server-python-v2/blob/master/README.ru.md).
 
-`whatsapp-api-webhook-server-python-v2` is a library for receiving and processing webhooks from [green-api.com](https://green-api.com/en/), based on `FastAPI` server. You should get a registration token and an account ID in
-your [personal cabinet](https://console.green-api.com/) to use the library. There is a free developer account tariff.
+`whatsapp-api-webhook-server-python-v2` is a library for receiving and processing webhooks from [green-api.com](https://green-api.com/en/), based on `FastAPI` server.
+
+You should get a registration token and an account ID in your [personal cabinet](https://console.green-api.com/) to use the library. To develop, you can use a free account with the "Developer" tariff.
 
 ## API
 
-The documentation for the REST API can be found at the [link](https://green-api.com/en/docs/). The library is a wrapper
-for the REST API, so the documentation at the link above also applies.
+The documentation for the REST API can be found at the [link](https://green-api.com/en/docs/). The library is a wrapper for the REST API, so the documentation at the link above also applies.
 
 ## Authorization
 
-To send a message or perform other Green API methods, the WhatsApp account in the phone app must be authorized. To
-authorize the account, go to your [cabinet](https://console.green-api.com/) and scan the QR code using the WhatsApp app.
+To send a message or perform other Green API methods, the WhatsApp account in the phone app must be authorized. To authorize the account, go to your [cabinet](https://console.green-api.com/) and scan the QR code using the WhatsApp app.
 
 ## Examples of preparing the environment
 
@@ -90,13 +88,13 @@ Library installation:
 python3 -m pip install whatsapp-api-webhook-server-python-v2
 ```
 
-As an example you can download and run [our script](
-https://github.com/green-api/whatsapp-api-webhook-server-python-v2/blob/master/examples/receive_all_with_counter.py
-).
+As an example you can download and run [our script](https://github.com/green-api/whatsapp-api-webhook-server-python-v2/blob/master/examples/receive_all_with_counter.py):
+
 
 ```shell
 wget https://raw.githubusercontent.com/green-api/whatsapp-api-webhook-server-python-v2/master/examples/receive_all_with_counter.py
 ```
+
 
 ```shell
 python3 -m receive_all_with_counter.py
@@ -149,7 +147,7 @@ Options -> Rules for incoming connections -> Create Rule -> Rule Type = Port Pro
 firewall settings. options -> Rules for incoming connections -> Create Rule -> Rule Type = Port, Protocols and Port ->
 TCP, specify port, Action -> Allow connection).
 
-### How to run example via docker-compose
+### How to run example via Docker
 
 The machine should have Docker installed.
 
@@ -170,7 +168,7 @@ In this case we run a webhook server on `8000` port inside container and proxy o
 In [personal cabinet](https://console.green-api.com/) you
 will need to specify the IP (or external machine name) with this (`80`) port.
 
-After starting the container, the container console should receive incoming notifications.
+After the container is launched, the data on incoming webhooks will be available in the console.
 
 Also you can run it via `docker compose` (from root repo directory):
 
