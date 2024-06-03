@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="whatsapp_api_webhook_server_python_v2",
-    version="0.0.1",
+    version="0.1.0",
     description=(
         "This library helps you easily create"
         " a Python server endpoint to receive"
