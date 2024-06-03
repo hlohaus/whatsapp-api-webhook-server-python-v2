@@ -114,11 +114,13 @@ class ContactsArrayMessage(BaseModel):
 
 
 class Button(BaseModel):
+
     button_id: Optional[str] = Field(None, alias="buttonId")
     button_text: Optional[str] = Field(None, alias="buttonText")
 
 
 class ButtonsMessage(BaseModel):
+
     content_text: Optional[str] = Field(None, alias="contentText")
     footer: Optional[str] = Field(None, alias="footer")
     buttons: Optional[List[Button]] = Field(None, alias="buttons")
@@ -127,17 +129,20 @@ class ButtonsMessage(BaseModel):
 
 
 class ListMessageRow(BaseModel):
+
     title: Optional[str] = Field(None, alias="title")
     row_id: Optional[str] = Field(None, alias="rowId")
     description: Optional[str] = Field(None, alias="description")
 
 
 class ListMessageSection(BaseModel):
+
     title: Optional[str] = Field(None, alias="title")
     rows: Optional[List[ListMessageRow]] = Field(None, alias="rows")
 
 
 class ListMessage(BaseModel):
+
     content_text: Optional[str] = Field(None, alias="contentText")
     title: Optional[str] = Field(None, alias="title")
     footer: Optional[str] = Field(None, alias="footer")
@@ -178,6 +183,7 @@ class TemplateMessageButton(BaseModel):
 
 
 class TemplateMessage(BaseModel):
+
     content_text: Optional[str] = Field(None, alias="contentText")
     footer: Optional[str] = Field(None, alias="footer")
     buttons: Optional[List[TemplateMessageButton]] = Field(None, alias="buttons")
@@ -186,6 +192,7 @@ class TemplateMessage(BaseModel):
 
 
 class GroupInviteMessageDataExpiration(BaseModel):
+
     low: Optional[int] = Field(None, alias="low")
     high: Optional[int] = Field(None, alias="high")
     unsigned: Optional[bool] = Field(None, alias="unsigned")
@@ -205,15 +212,18 @@ class GroupInviteMessageData(BaseModel):
 
 
 class PollMessageOption(BaseModel):
+
     option_name: Optional[str] = Field(None, alias="optionName")
 
 
 class PollMessageVote(BaseModel):
+
     option_name: Optional[str] = Field(None, alias="optionName")
     option_voters: Optional[List[str]] = Field(None, alias="optionVoters")
 
 
 class PollMessageData(BaseModel):
+
     stanza_id: Optional[str] = Field(None, alias="stanzaId")
     name: Optional[str] = Field(None, alias="name")
     options: Optional[List[PollMessageOption]] = Field(None, alias="options")
