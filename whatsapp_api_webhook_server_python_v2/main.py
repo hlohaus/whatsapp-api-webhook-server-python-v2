@@ -5,7 +5,9 @@ from typing import Annotated, Any, Callable, Dict, Optional, Union
 
 import uvicorn
 import uvicorn.config
-from fastapi import Depends, FastAPI, Header, HTTPException, status
+from fastapi import Depends, FastAPI, Header, HTTPException, Request, status
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 
 from .webhook_dto import WebhookData
 
@@ -65,7 +67,14 @@ class GreenAPIWebhookServer:
 
         self._server_app = FastAPI(docs_url=None)
 
-        @self._server_app.post("/", status_code=status.HTTP_204_NO_CONTENT)
+        @self._server_app.exception_handler(RequestValidationError)
+        def validation_exception_handler(request: Request, exc: RequestValidationError):
+            return JSONResponse(
+                status_code=200,
+                content={"message": "Incorrect data received", "errors": exc.errors()},
+            )
+
+        @self._server_app.post("/", status_code=status.HTTP_200_OK)
         def webhook_endpoint(
             webhook_data: WebhookData,
             authorization: Annotated[Union[str, None], Header()] = None,
@@ -77,8 +86,8 @@ class GreenAPIWebhookServer:
             """
             Endpoint for receiving webhooks from GreenAPI
 
-            If `WEBHOOK_AUTH_TOKEN` env provided, request's `authorization`
-            header must be in format `Bearer {WEBHOOK_AUTH_TOKEN}`
+            If `webhook_auth_header` arg provided, request's `authorization`
+            header must be in format `Bearer {webhook_auth_header}`
             """
             if webhook_auth_header and authorization != f"Bearer {webhook_auth_header}":
                 raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)

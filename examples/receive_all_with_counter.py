@@ -18,6 +18,7 @@ handler = GreenAPIWebhookServer(
     host="0.0.0.0",
     port=8080,
     webhook_auth_header=None,  # Change it to actual webhook secret
+    return_keys_by_alias=True,
 )
 
 
