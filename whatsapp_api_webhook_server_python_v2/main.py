@@ -26,7 +26,7 @@ class GreenAPIWebhookServer():
         self._enable_info_logs = enable_info_logs
         self._init_app(app)
 
-    def _handle_webhook(self, webhook_data: WebhookData, handler_func: callable):
+    async def _handle_webhook(self, webhook_data: WebhookData, handler_func: callable):
         """
         Handles the incoming webhook data by calling the event handler function
         """
@@ -34,7 +34,7 @@ class GreenAPIWebhookServer():
             exclude_none=True,
             by_alias=self._return_keys_by_alias,
         )
-        handler_func(webhook_data.type_webhook, parsed_data)
+        await handler_func(webhook_data.type_webhook, parsed_data)
 
     def _init_app(self, app: FastAPI):
         """
