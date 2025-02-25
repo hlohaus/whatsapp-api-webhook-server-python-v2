@@ -15,9 +15,8 @@ setup(
     url="https://github.com/green-api/whatsapp-api-webhook-server-python-v2",
     packages=["whatsapp_api_webhook_server_python_v2"],
     install_requires=[
-        "fastapi==0.110.0",
-        "uvicorn[standard]==0.30.0",
-        "pydantic==2.7.1",
+        "fastapi",
+        "pydantic",
     ],
     python_requires=">=3.8",
     classifiers=[
