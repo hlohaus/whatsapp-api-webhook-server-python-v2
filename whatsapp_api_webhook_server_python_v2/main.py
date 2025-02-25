@@ -27,16 +27,6 @@ class GreenAPIWebhookServer():
         self._enable_info_logs = enable_info_logs
         self._init_app(app)
 
-    def _handle_webhook(self, webhook_data: WebhookData, handler_func: callable, chat_id: str = None):
-        """
-        Handles the incoming webhook data by calling the event handler function
-        """
-        parsed_data = webhook_data.model_dump(
-            exclude_none=True,
-            by_alias=self._return_keys_by_alias,
-        )
-        handler_func(webhook_data.type_webhook, parsed_data, chat_id=chat_id)
-
     def _init_app(self, app: FastAPI):
         """
         Init webhooks listener server with provided data
@@ -79,7 +69,7 @@ class GreenAPIWebhookServer():
             if webhook_auth_header and authorization != f"Bearer {webhook_auth_header}":
                 raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
-            background_tasks.add_task(self._handle_webhook, webhook_data, webhook_handler_func, chat_id)
+            background_tasks.add_task(self._event_handler, webhook_data, chat_id)
 
         self._server_app.state.WEBHOOK_HANDLER_FUNC = self._event_handler
         self._server_app.state.WEBHOOK_AUTH_HEADER = self._webhook_auth_header
