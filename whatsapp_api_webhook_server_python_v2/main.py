@@ -54,12 +54,12 @@ class GreenAPIWebhookServer():
         @self._server_app.post("/ws", status_code=status.HTTP_200_OK)
         async def webhook_endpoint(
             webhook_data: WebhookData,
+            background_tasks: BackgroundTasks,
             authorization: Annotated[Union[str, None], Header()] = None,
             webhook_handler_func: Callable = Depends(lambda: self._event_handler),
             webhook_auth_header: Optional[str] = Depends(
                 lambda: self._webhook_auth_header
             ),
-            background_tasks: BackgroundTasks
         ):
             if webhook_auth_header and authorization != f"Bearer {webhook_auth_header}":
                 raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
@@ -70,12 +70,12 @@ class GreenAPIWebhookServer():
         async def webhook_endpoint(
             chat_id: str,
             webhook_data: WebhookData,
+            background_tasks: BackgroundTasks,
             authorization: Annotated[Union[str, None], Header()] = None,
             webhook_handler_func: Callable = Depends(lambda: self._event_handler),
             webhook_auth_header: Optional[str] = Depends(
                 lambda: self._webhook_auth_header
             ),
-            background_tasks: BackgroundTasks
         ):
             if webhook_auth_header and authorization != f"Bearer {webhook_auth_header}":
                 raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
