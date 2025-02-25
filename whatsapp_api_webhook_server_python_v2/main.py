@@ -51,7 +51,7 @@ class GreenAPIWebhookServer():
             )
 
         @self._server_app.post("/ws", status_code=status.HTTP_200_OK)
-        def webhook_endpoint(
+        async def webhook_endpoint(
             webhook_data: WebhookData,
             authorization: Annotated[Union[str, None], Header()] = None,
             webhook_handler_func: Callable = Depends(lambda: self._event_handler),
