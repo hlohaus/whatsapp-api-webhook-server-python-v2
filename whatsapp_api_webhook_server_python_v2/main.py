@@ -62,7 +62,7 @@ class GreenAPIWebhookServer():
             if webhook_auth_header and authorization != f"Bearer {webhook_auth_header}":
                 raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
-            self._handle_webhook(webhook_data, webhook_handler_func)
+            await self._handle_webhook(webhook_data, webhook_handler_func)
 
         self._server_app.state.WEBHOOK_HANDLER_FUNC = self._event_handler
         self._server_app.state.WEBHOOK_AUTH_HEADER = self._webhook_auth_header
